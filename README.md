@@ -189,5 +189,28 @@ Sample Input2: `("aa", "aab")`
 Sample Output2: `True`
 
 ```swift
-let
+var input = ("abc", "a")
+var ransomNote: [Character] = input.0.sorted()
+var magBank: [Character] = input.1.sorted()
+var capable: Bool = false
+
+for recChar in ransomNote {
+    if ransomNote.count < magBank.count{
+        for posChar in magBank {
+            if recChar == posChar {
+                magBank.remove(at: 0)
+                capable = true
+                break
+            } else {
+                magBank.remove(at: 0)
+                capable = false
+            }
+        }
+    } else {
+        capable = false
+    }
+}
+
+print(capable)
+
 ```
