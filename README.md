@@ -9,7 +9,7 @@ You are given a string stored in variable `problem`. Write code so that you prin
 Example
 
 Input:
-`var problem ="split this string into words and print them on separate lines"`
+`var problem = "split this string into words and print them on separate lines"`
 
 Output:
 ```swift
@@ -28,26 +28,10 @@ lines
 
 ```swift
 var problem = "split this string into words and print them on separate lines"
-var currentWord = ""
-var wordArray = [String] ()
+var arrayProblem = problem.components(separatedBy: " ")
 
-// fills array with characters preceeding a space
-for char in problem {
-if char == "\u{0020}" {
-wordArray.append(currentWord)
-currentWord = ""
-continue
-} else {
-currentWord += String(char)
-}
-}
-
-// Finishes array by appending the value last assigned to currentWord
-wordArray.append(currentWord)
-
-// Prints each element of the array onto separate lines
-for eachWord in wordArray {
-print(eachWord)
+for word in arrayProblem {
+    print(word)
 }
 ```
 
@@ -62,24 +46,20 @@ let testString = "  How   about      thesespaces  ?  "
 ```
 ```swift
 let testString = "  How   about      thesespaces  ?  "
+
+var preceedingChar = ""
 var condensedString = ""
-var currentWord = ""
-var spaces = 0
 
 for char in testString {
-if char == " " {
-spaces += 1
-if spaces > 1 {
-spaces = 0
-continue
-} else {
-currentWord.append(char)
-}
-} else {
-currentWord += String(char)
-}
-condensedString += currentWord
-currentWord = ""
+
+    if preceedingChar == " " && char == " " {
+        continue
+    } else {
+        condensedString.append(char)
+    }
+    
+    // start updating preceedingChar just before the start of new subsequent iterations
+    preceedingChar = String(char)   
 }
 print(condensedString)
 ```
@@ -167,6 +147,29 @@ for status in attendance {
 }
 
 print(reward)
+
+// Optional alternative method to check if more than 2 consecutive L's 
+// Clunky and probably not necessary given context of problem
+//var input = "PPALLP"
+//
+//var preceedingLetter = ""
+//var trackL = 0
+//var reward = true
+//
+//for status in input {
+//    preceedingLetter = String(status)
+//    if status == "L" && preceedingLetter == "L" {
+//        trackL += 1
+//        if trackL > 2 {
+//            reward = false
+//            break
+//        }
+//    } else {
+//        trackL = 0
+//        continue
+//    }
+//}
+//print(reward)
 ```
 
 ## Question 6
@@ -184,3 +187,7 @@ Sample Output1: `False`
 Sample Input2: `("aa", "aab")`
 
 Sample Output2: `True`
+
+```swift
+let
+```
