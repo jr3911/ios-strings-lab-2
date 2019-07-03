@@ -189,13 +189,13 @@ Sample Input2: `("aa", "aab")`
 Sample Output2: `True`
 
 ```swift
-var input = ("abc", "a")
+var input = ("aba", "a")
 var ransomNote: [Character] = input.0.sorted()
 var magBank: [Character] = input.1.sorted()
 var capable: Bool = false
 
-for recChar in ransomNote {
-    if ransomNote.count < magBank.count{
+if ransomNote.count <= magBank.count{
+    for recChar in ransomNote {
         for posChar in magBank {
             if recChar == posChar {
                 magBank.remove(at: 0)
@@ -206,9 +206,9 @@ for recChar in ransomNote {
                 capable = false
             }
         }
-    } else {
-        capable = false
     }
+} else {
+    capable = false
 }
 
 print(capable)
